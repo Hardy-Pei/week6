@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <br />
+    <div class="jumbotron">
+        <h1>To-Do Web</h1>
+        <h2> <a href="/newtask" class="btn btn-primary">Add new Task</a>
+            <a href="/listtasks" class="btn btn-primary">List All Tasks</a>
+            <a href="/delete" class="btn btn-primary">Delete Task</a>
+            <a href="/deleteAll" class="btn btn-primary">Delete All Tasks</a>
+            <a href="/update" class="btn btn-primary">Update task</a>
+        </h2>
+    </div>
+
+    <table class="table table-condensed">
+        <tr>
+            <td>Task ID</td>
+            <td>Task Name</td>
+            <td>Assign To</td>
+            <td>Due Date</td>
+            <td>Task Status</td>
+            <td>Description</td>
+        </tr>
+        <% for ( var i =0; i< ar.length;i++){ %>
+        <tr>
+            <td>
+                <%= ar[i].id %>
+            </td>
+            <td>
+                <%= ar[i].name %>
+            </td>
+            <td>
+                <%= ar[i].assign %>
+            </td>
+            <td>
+                <%= ar[i].due %>
+            </td>
+            <td>
+                <%= ar[i].status %>
+            </td>
+            <td>
+                <%= ar[i].desc %>
+            </td>
+        </tr>
+        <% }%>
+    </table>
+
+    <form action="/newtask" method="POST">
+        <div class="form-group">
+            <label>Task Name</label>
+            <input type="text" class="form-control" placeholder="Task Name" name="taskname">
+        </div>
+        <div class="form-group">
+            <label>Assign To</label>
+            <input type="text" class="form-control" placeholder="Assign To" name="assignto">
+        </div>
+        <div class="form-group">
+            <label>Due date</label>
+            <input type="date" class="form-control" name="duedate">
+        </div>
+        <div class="form-group">
+            <label>Task Status</label>
+            <select class="form-control" name="taskstatus">
+                <option value="InProgress">In Progress</option>
+                <option value="Complete">Complete</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Task Description</label>
+            <input type="text" class="form-control" placeholder="Task Description" name="taskdesc">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+
+</body>
+
+</html>
