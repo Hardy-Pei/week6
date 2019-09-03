@@ -63,7 +63,7 @@ app.get('/delete', function (req, res) {
 });
 
 app.get('/deleteAll', function (req, res) {
-    tasks.deleteMany({}, function (err, obj) {
+    tasks.deleteMany({status: 'Complete'}, function (err, obj) {
         res.redirect('/listtasks');
     });
 });
