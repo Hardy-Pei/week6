@@ -114,4 +114,12 @@ function getNewId() {
     return (Math.floor(100000 + Math.random() * 900000));
 };
 
+app.get("/findtasks/:A/:B", function(req,res) {
+    tasks.find({$and: [{id:{$gte : parseInt(req.params.A)}}, {id:{$lte:parseInt(req.params.B)}}]}).toArray(function(err, result) {
+        res.render('find.html', {
+            ar: result
+        });
+    });
+});
+
 app.listen(8080);
